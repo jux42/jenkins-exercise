@@ -29,6 +29,7 @@ pipeline {
                     env.MESSAGE = "finished"
                 }
                 echo "${env.MESSAGE}";
+            }post{
                 sh 'touch report.txt';
                 sh "echo 'build number ${env.BUILD_NUMBER} succeeded' > report.txt"
                 archiveArtifacts allowEmptyArchive: true,
