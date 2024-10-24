@@ -31,7 +31,7 @@ pipeline{
             file: '${env.WORKSPACE/report.txt}'
         }
         {
-        echo MESSAGE;}
+        echo MESSAGE;
         echo "build number $env.BUILD_NUMBER succeeded" | tee report.txt
         }
     
