@@ -1,45 +1,42 @@
-pipeline{
+pipeline {
     agent any
 
-    environment{
+    environment {
         MESSAGE = "main message"
-
     }
-    stages{
-        stage("check"){
-        environment{
-        MESSAGE = "check messsage"}
-            steps{
-            echo "$MESSAGE";
+
+    stages {
+        stage("check") {
+            steps {
+                script {
+                    MESSAGE = "check message"
+                }
+                echo "${MESSAGE}";
+                echo "done";
             }
-            {
-            echo "done";
+        }
 
+        stage("execute") {
+            steps {
+                echo "${MESSAGE}";
+                echo "done";
             }
+        }
 
-        }
-        stage("execute"){
-        steps{
-        echo "$MESSAGE";
-                 }{
-        echo "done";}
-        }
-        stage("post"){
-        environment{
-        MESSAGE = "finished"}
-        steps{
-            file: '${env.WORKSPACE/report.txt}'
-        }
-        {
-        echo "$MESSAGE";
-        sh 'touch report.txt';
-        echo  "build number ${env.BUILD_NUMBER} succeeded" > report.txt 
+        stage("post") {
+            steps {
+                script {
+                    MESSAGE = "finished"
+                }
+                echo "${env.MESSAGE}";
+                sh 'touch report.txt';
+                echo "build number ${env.BUILD_NUMBER} succeeded" > report.txt
 
-        archiveArtifacts allowEmptyArchive: true,
-                         artifacts: '*.txt',
-                         fingerprint: true,
-                         onlyIfSuccessful: true
+                archiveArtifacts allowEmptyArchive: true,
+                                 artifacts: '*.txt',
+                                 fingerprint: true,
+                                 onlyIfSuccessful: true
+            }
+        }
     }
-}
-}
 }
