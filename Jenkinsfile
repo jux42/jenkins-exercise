@@ -1,6 +1,6 @@
 pipeline{
     agent any
-    
+
     environment{
         MESSAGE = "main message"
 
@@ -14,9 +14,9 @@ pipeline{
             }
             {
             echo "done";
-            
+
             }
-        
+
         }
         stage("execute"){
         steps{
@@ -39,5 +39,6 @@ pipeline{
                          fingerprint: true,
                          onlyIfSuccessful: true
     }
+}
 }
 }
