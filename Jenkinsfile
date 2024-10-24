@@ -32,7 +32,7 @@ pipeline{
         }
         {
         echo MESSAGE;}
-        echo "build number $env.BUILD_NUMBER succeeded" | tee -a report.txt
+        echo "build number $env.BUILD_NUMBER succeeded" | tee report.txt
         }
     
     }
