@@ -9,16 +9,16 @@ pipeline {
         stage("check") {
             steps {
                 script {
-                    MESSAGE = "check message"
+                    env.MESSAGE = "check message"
                 }
-                echo "${MESSAGE}";
+                echo "${env.MESSAGE}";
                 echo "done";
             }
         }
 
         stage("execute") {
             steps {
-                echo "${MESSAGE}";
+                echo "${env.MESSAGE}";
                 echo "done";
             }
         }
@@ -26,7 +26,7 @@ pipeline {
         stage("post") {
             steps {
                 script {
-                    MESSAGE = "finished"
+                    env.MESSAGE = "finished"
                 }
                 echo "${env.MESSAGE}";
                 sh 'touch report.txt';
