@@ -11,14 +11,14 @@ pipeline {
                 script {
                     MESSAGE = "check message"
                 }
-                echo "${env.MESSAGE}";
+                echo "${MESSAGE}";
                 echo "done";
             }
         }
 
         stage("execute") {
             steps {
-                echo "${env.MESSAGE}";
+                echo "${MESSAGE}";
                 echo "done";
                 sh 'touch report.txt'
                 sh "echo 'build number ${env.BUILD_NUMBER} succeeded' > report.txt"
