@@ -7,10 +7,11 @@ pipeline {
 
     stages {
         stage("check") {
-            steps {
+           
                 environment {
                     env.MESSAGE = "check message"
                 }
+             steps {
                 echo "${env.MESSAGE}";
                 echo "done";
             }
@@ -24,10 +25,11 @@ pipeline {
         }
 
         stage("post") {
-            steps {
+            
                 environment {
                     env.MESSAGE = "finished"
                 }
+            steps {
                 echo "${env.MESSAGE}";
             }
             }post{
