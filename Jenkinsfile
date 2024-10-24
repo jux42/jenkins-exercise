@@ -1,7 +1,7 @@
 pipeline{
     agent any
     
-    Environment{
+    environment{
         MESSAGE = "main message"
 
     }
