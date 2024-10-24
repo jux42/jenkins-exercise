@@ -7,38 +7,36 @@ pipeline {
 
     stages {
         stage("check") {
-           
-                    
-             steps {
-                 $MESSAGE = "check message"
-                echo "${MESSAGE}";
+            steps {
+                script {
+                    env.MESSAGE = "check message"
+                }
+                echo "${env.MESSAGE}";
                 echo "done";
             }
         }
 
         stage("execute") {
             steps {
-                echo "${$MESSAGE}";
+                echo "${env.MESSAGE}";
                 echo "done";
             }
         }
 
-        stage("post") {
-     
+        post {
             steps {
-                $MESSAGE = "finished"
-                echo "${MESSAGE}";
+                script {
+                    env.MESSAGE = "finished"
+                }
+                echo "${env.MESSAGE}";
+
+                sh 'touch report.txt'
+
+                sh "echo 'build number ${env.BUILD_NUMBER} succeeded' > report.txt"
+
+                // Archiver le fichier généré
+                archiveArtifacts artifacts: 'report.txt', fingerprint: true, onlyIfSuccessful: true
             }
         }
     }
-            }post{
-                always{
-                sh 'touch report.txt';
-                sh "echo 'build number ${env.BUILD_NUMBER} succeeded' > report.txt"
-                archiveArtifacts allowEmptyArchive: true,
-                                 artifacts: '*.txt',
-                                 fingerprint: true,
-                                 onlyIfSuccessful: true
-                }
-            }
-    
+}
