@@ -36,5 +36,5 @@ pipeline {
                 archiveArtifacts artifacts: 'report.txt', fingerprint: true, onlyIfSuccessful: true
             }
         }
-    }
+    
 
