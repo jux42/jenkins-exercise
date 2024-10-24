@@ -26,7 +26,10 @@ pipeline {
         }
     }
         post {
+            always{
                 archiveArtifacts artifacts: 'report.txt', fingerprint: true, onlyIfSuccessful: true
+
+            }
             
         }
 }
