@@ -33,6 +33,7 @@ pipeline {
                 echo "${env.MESSAGE}";
             }
         }
+    }
             }post{
                 always{
                 sh 'touch report.txt';
@@ -43,5 +44,5 @@ pipeline {
                                  onlyIfSuccessful: true
             
             }
-    }
+    
 }
