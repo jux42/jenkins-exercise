@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage("check") {
             steps {
-                environment {
+                script {
                     MESSAGE = "check message"
                 }
                 echo "${MESSAGE}";
@@ -18,6 +18,9 @@ pipeline {
 
         stage("execute") {
             steps {
+                script {
+                    MESSAGE = "execute message"
+                }
                 echo "${MESSAGE}";
                 echo "done";
                 sh 'touch report.txt'
