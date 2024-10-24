@@ -8,10 +8,9 @@ pipeline {
     stages {
         stage("check") {
            
-                environment {
-                    env.MESSAGE = "check message"
-                }
+                    
              steps {
+                 env.MESSAGE = "check message"
                 echo "${env.MESSAGE}";
                 echo "done";
             }
@@ -25,11 +24,9 @@ pipeline {
         }
 
         stage("post") {
-            
-                environment {
-                    env.MESSAGE = "finished"
-                }
+     
             steps {
+                env.MESSAGE = "finished"
                 echo "${env.MESSAGE}";
             }
         }
@@ -42,7 +39,7 @@ pipeline {
                                  artifacts: '*.txt',
                                  fingerprint: true,
                                  onlyIfSuccessful: true
-            
+                }
             }
     
 }
