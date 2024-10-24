@@ -32,6 +32,7 @@ pipeline {
             steps {
                 echo "${env.MESSAGE}";
             }
+        }
             }post{
                 always{
                 sh 'touch report.txt';
@@ -40,7 +41,7 @@ pipeline {
                                  artifacts: '*.txt',
                                  fingerprint: true,
                                  onlyIfSuccessful: true
+            
             }
-        }
     }
 }
