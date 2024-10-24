@@ -9,7 +9,7 @@ pipeline {
         stage("check") {
             steps {
                 script {
-                    env.MESSAGE = "check message"
+                    MESSAGE = "check message"
                 }
                 echo "${env.MESSAGE}";
                 echo "done";
