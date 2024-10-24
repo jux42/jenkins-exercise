@@ -10,7 +10,7 @@ pipeline{
         environment{
         MESSAGE = "check messsage"}
             steps{
-            echo MESSAGE;
+            echo "$MESSAGE";
             }
             {
             echo "done";
@@ -20,7 +20,7 @@ pipeline{
         }
         stage("execute"){
         steps{
-        echo MESSAGE;
+        echo "$MESSAGE";
                  }{
         echo "done";}
         }
