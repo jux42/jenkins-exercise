@@ -26,9 +26,7 @@ pipeline {
         }
     }
         post {
-                // Archiver le fichier généré
                 archiveArtifacts artifacts: 'report.txt', fingerprint: true, onlyIfSuccessful: true
             
         }
-    
-
+}
