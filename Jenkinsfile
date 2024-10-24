@@ -22,7 +22,7 @@ pipeline {
                 echo "done";
             }
         }
-
+    }
         post {
             steps {
                 script {
@@ -39,4 +39,4 @@ pipeline {
             }
         }
     }
-}
+
