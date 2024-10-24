@@ -10,15 +10,15 @@ pipeline {
            
                     
              steps {
-                 env.MESSAGE = "check message"
-                echo "${env.MESSAGE}";
+                 $MESSAGE = "check message"
+                echo "${MESSAGE}";
                 echo "done";
             }
         }
 
         stage("execute") {
             steps {
-                echo "${env.MESSAGE}";
+                echo "${$MESSAGE}";
                 echo "done";
             }
         }
@@ -26,8 +26,8 @@ pipeline {
         stage("post") {
      
             steps {
-                env.MESSAGE = "finished"
-                echo "${env.MESSAGE}";
+                $MESSAGE = "finished"
+                echo "${MESSAGE}";
             }
         }
     }
