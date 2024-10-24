@@ -24,10 +24,8 @@ pipeline {
         }
     }
         post {
-            steps {
-                script {
-                    env.MESSAGE = "finished"
-                }
+ 
+                env.MESSAGE = "finished"
                 echo "${env.MESSAGE}";
 
                 sh 'touch report.txt'
