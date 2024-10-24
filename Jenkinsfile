@@ -20,13 +20,12 @@ pipeline {
             steps {
                 echo "${env.MESSAGE}";
                 echo "done";
+                sh 'touch report.txt'
+                sh "echo 'build number ${env.BUILD_NUMBER} succeeded' > report.txt"
             }
         }
     }
         post {
-                sh 'touch report.txt'
-                sh "echo 'build number ${env.BUILD_NUMBER} succeeded' > report.txt"
-
                 // Archiver le fichier généré
                 archiveArtifacts artifacts: 'report.txt', fingerprint: true, onlyIfSuccessful: true
             }
