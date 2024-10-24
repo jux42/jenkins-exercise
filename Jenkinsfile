@@ -33,13 +33,11 @@ pipeline{
         {
         echo "$MESSAGE";
         echo "build number ${env.BUILD_NUMBER} succeeded";
-            sh 'touch report.txt';
-        }
-            {
-                archiveArtifacts allowEmptyArchive: true,
-                    artifacts: '*.txt',
-                    fingerprint: true,
-                    onlyIfSuccessful: true
+        sh 'touch report.txt';
+        archiveArtifacts allowEmptyArchive: true,
+                         artifacts: '*.txt',
+                         fingerprint: true,
+                         onlyIfSuccessful: true
     }
 }
 }
