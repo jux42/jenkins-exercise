@@ -30,7 +30,7 @@ pipeline {
                 }
                 echo "${env.MESSAGE}";
                 sh 'touch report.txt';
-                'echo "build number ${env.BUILD_NUMBER} succeeded" > report.txt'
+                echo "build number ${env.BUILD_NUMBER} succeeded" > 'report.txt'
 
                 archiveArtifacts allowEmptyArchive: true,
                                  artifacts: '*.txt',
