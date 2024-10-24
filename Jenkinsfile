@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage("check") {
             steps {
-                script {
+                environment {
                     env.MESSAGE = "check message"
                 }
                 echo "${env.MESSAGE}";
@@ -25,11 +25,13 @@ pipeline {
 
         stage("post") {
             steps {
-                script {
+                environment {
                     env.MESSAGE = "finished"
                 }
                 echo "${env.MESSAGE}";
+            }
             }post{
+                always{
                 sh 'touch report.txt';
                 sh "echo 'build number ${env.BUILD_NUMBER} succeeded' > report.txt"
                 archiveArtifacts allowEmptyArchive: true,
