@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage("check") {
             steps {
-                script {
+                environment {
                     MESSAGE = "check message"
                 }
                 echo "${MESSAGE}";
